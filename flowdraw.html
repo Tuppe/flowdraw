@@ -15,7 +15,11 @@
 }
 
 .node.fixed {
-  /*fill: #f00;*/
+  fill: #f00;
+}
+
+body {
+  overscroll-behavior: contain;
 }
 
 </style>
@@ -48,6 +52,8 @@ var force = d3.layout.force()
     .size([width, height])
     .charge(-10000)
     .linkDistance(500)
+    .friction(0)
+    .gravity(0)
     .on("tick", tick);
 
 var drag = force.drag()
@@ -113,7 +119,6 @@ function dragstart(d) {
 
 function dragend(d) {
   d3.select(this).classed("fixed", d.fixed = false);
-  console.log("asdas");
 }
 
 </script>
