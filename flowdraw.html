@@ -4,7 +4,7 @@
 
 .link {
   stroke: #000;
-  stroke-width: 1.5px;
+  stroke-width: 5px;
 }
 
 .node {
@@ -100,7 +100,11 @@ link = link.data(graph.links)
     .enter()
     .append("line")
     .attr("class", "link")
-    .style("filter", "url(#line-glow)");
+    .style("filter", "url(#line-glow)")
+    .on("click", function(d){
+      console.log(d);
+      alert("clicked link");
+    });
 
 var g = nodes.enter().append("g");
 
@@ -133,6 +137,8 @@ function tick() {
 
 function dblclick(d) {
   d3.select(this).classed("fixed", d.fixed = false);
+      alert("dblclick");
+  console.log(d3.select(this));
 }
 
 function dragstart(d) {
